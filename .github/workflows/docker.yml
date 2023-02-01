@@ -2,7 +2,7 @@ name: Docker
 on:
   push:
     branches:
-      - main
+      - main-bm
     tags:
       - "[0-9]+.[0-9]+.[0-9]+"
 env:
@@ -50,7 +50,7 @@ jobs:
       - name: Build bank-vaults
         uses: docker/build-push-action@v3
         with:
-          tags: ghcr.io/banzaicloud/bank-vaults:${{ steps.imagetag.outputs.value }}
+          tags: ghcr.io/backmarket-oss/bank-vaults:${{ steps.imagetag.outputs.value }}
           file: Dockerfile
           platforms: ${{ env.PLATFORMS }}
           push: true
@@ -59,7 +59,7 @@ jobs:
       - name: Build vault-env
         uses: docker/build-push-action@v3
         with:
-          tags: ghcr.io/banzaicloud/vault-env:${{ steps.imagetag.outputs.value }}
+          tags: ghcr.io/backmarket-oss/vault-env:${{ steps.imagetag.outputs.value }}
           file: Dockerfile.vault-env
           platforms: ${{ env.PLATFORMS }}
           push: true
@@ -68,7 +68,7 @@ jobs:
       - name: Build vault-operator
         uses: docker/build-push-action@v3
         with:
-          tags: ghcr.io/banzaicloud/vault-operator:${{ steps.imagetag.outputs.value }}
+          tags: ghcr.io/backmarket-oss/vault-operator:${{ steps.imagetag.outputs.value }}
           file: Dockerfile.operator
           platforms: ${{ env.PLATFORMS }}
           push: true
@@ -77,7 +77,7 @@ jobs:
       - name: Build vault-secrets-webhook
         uses: docker/build-push-action@v3
         with:
-          tags: ghcr.io/banzaicloud/vault-secrets-webhook:${{ steps.imagetag.outputs.value }}
+          tags: ghcr.io/backmarket-oss/vault-secrets-webhook:${{ steps.imagetag.outputs.value }}
           file: Dockerfile.webhook
           platforms: ${{ env.PLATFORMS }}
           push: true
