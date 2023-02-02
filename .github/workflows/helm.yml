@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
 
       - uses: azure/setup-helm@v3
         with:
@@ -82,15 +84,15 @@ jobs:
           echo "CHART_NAME=${CHART_NAME}"
           echo "chart_name=${CHART_NAME}" >> $GITHUB_OUTPUT
 
-      - if: ${{ steps.set-helm-push-enabled.outputs.helm_push_enabled == 1 }}
-        name: Package Helm chart
-        id: package-chart
-        run: |
-          HELM_PACKAGE_OUTPUT=$(helm package "${{ github.workspace }}/charts/${{ steps.set-chart-name.outputs.chart_name }}") || exit 1
-          HELM_PACKAGE_PATH="${HELM_PACKAGE_OUTPUT##"Successfully packaged chart and saved it to: "}"
-
-          echo "HELM_PACKAGE_PATH=${HELM_PACKAGE_PATH}"
-          echo "helm_package_path=${HELM_PACKAGE_PATH}" >> $GITHUB_OUTPUT
+      #- if: ${{ steps.set-helm-push-enabled.outputs.helm_push_enabled == 1 }}
+      #  name: Package Helm chart
+      #  id: package-chart
+      #  run: |
+      #    HELM_PACKAGE_OUTPUT=$(helm package "${{ github.workspace }}/charts/${{ steps.set-chart-name.outputs.chart_name }}") || exit 1
+      #    HELM_PACKAGE_PATH="${HELM_PACKAGE_OUTPUT##"Successfully packaged chart and saved it to: "}"
+      #
+      #    echo "HELM_PACKAGE_PATH=${HELM_PACKAGE_PATH}"
+      #    echo "helm_package_path=${HELM_PACKAGE_PATH}" >> $GITHUB_OUTPUT
 
       - if: ${{ steps.set-helm-push-enabled.outputs.helm_push_enabled == 1 }}
         name: Check Helm chart version in repository
@@ -124,8 +126,5 @@ jobs:
       - if: ${{ steps.set-helm-push-enabled.outputs.helm_push_enabled == 1 }}
         name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
-        with:
-            charts_dir: "${{ steps.package-chart.outputs.helm_package_path }}"
-            skip_packaging: true
         env:
             CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
