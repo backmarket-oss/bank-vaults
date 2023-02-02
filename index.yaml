@@ -1,0 +1,60 @@
+apiVersion: v1
+entries:
+  vault:
+  - apiVersion: v2
+    appVersion: 1.18.0
+    created: "2023-02-02T16:47:53.105640523Z"
+    description: A Helm chart for Vault, a tool for managing secrets
+    digest: a31e4a5311dae1c98820a63865fd74da84639dd711449af2c004b9da2323065b
+    home: https://www.vaultproject.io/
+    icon: https://www.vaultproject.io/assets/images/mega-nav/logo-vault-0f83e3d2.svg
+    maintainers:
+    - email: info@banzaicloud.com
+      name: Banzai Cloud
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/banzaicloud/bank-vaults
+    type: application
+    urls:
+    - https://github.com/backmarket-oss/bank-vaults/releases/download/vault-1.18.0-bm/vault-1.18.0-bm.tgz
+    version: 1.18.0-bm
+  vault-operator:
+  - apiVersion: v2
+    appVersion: 1.18.0
+    created: "2023-02-02T16:47:53.269354213Z"
+    description: A Helm chart for banzaicloud/bank-vaults Vault operator
+    digest: 63521ae1637647a64c0e2690a6bd0da10272d26d5e340b820cf39086b6b893d6
+    home: https://banzaicloud.com/products/bank-vaults/
+    icon: https://raw.githubusercontent.com/banzaicloud/bank-vaults/main/docs/images/logo/bank-vaults-logo.svg
+    maintainers:
+    - email: info@banzaicloud.com
+      name: Banzai Cloud
+    name: vault-operator
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/banzaicloud/bank-vaults
+    type: application
+    urls:
+    - https://github.com/backmarket-oss/bank-vaults/releases/download/vault-operator-1.18.0-bm/vault-operator-1.18.0-bm.tgz
+    version: 1.18.0-bm
+  vault-secrets-webhook:
+  - apiVersion: v2
+    appVersion: 1.18.0
+    created: "2023-02-02T16:47:53.430250965Z"
+    description: A Helm chart that deploys a mutating admission webhook that configures
+      applications to request secrets from Vault
+    digest: 9149a47e93d2cc0dab1a9c75046df1e49f589daabab9f015269781c3fa429d8f
+    home: https://banzaicloud.com/products/bank-vaults/
+    icon: https://raw.githubusercontent.com/banzaicloud/bank-vaults/main/docs/images/logo/bank-vaults-logo.svg
+    maintainers:
+    - email: info@banzaicloud.com
+      name: Banzai Cloud
+    name: vault-secrets-webhook
+    sources:
+    - https://github.com/banzaicloud/bank-vaults
+    type: application
+    urls:
+    - https://github.com/backmarket-oss/bank-vaults/releases/download/vault-secrets-webhook-1.18.2-bm/vault-secrets-webhook-1.18.2-bm.tgz
+    version: 1.18.2-bm
+generated: "2023-02-02T16:47:53.430255965Z"
